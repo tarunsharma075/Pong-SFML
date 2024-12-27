@@ -8,6 +8,9 @@ namespace GameManager {
 	
 	void GameWindowsManager::render()
 	{
+		gameWindow->clear(Color(241, 250, 238,255));
+
+		gameWindow->display();
 	}
 	RenderWindow* GameWindowsManager::getgamewindow()
 	{
@@ -21,7 +24,7 @@ namespace GameManager {
 
 	void GameWindowsManager::createGamewindows()
 	{
-		gameWindow->create(VideoMode(width, height), gameTile);
+		gameWindow->create(VideoMode::getDesktopMode(),gameTile,Style::Default);
 	}
 
 
