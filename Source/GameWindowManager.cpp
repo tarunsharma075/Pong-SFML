@@ -1,4 +1,5 @@
 #include"../../Header/GameWindowManager.h"
+
 namespace GameManager {
 	void GameWindowsManager::GameWindowsManager::Initialize()
 	{
@@ -8,7 +9,7 @@ namespace GameManager {
 	
 	void GameWindowsManager::render()
 	{
-		gameWindow->clear(Color(241, 250, 238,255));
+		gameWindow->clear(Color(0, 0, 0,255));
 
 		gameWindow->display();
 	}
