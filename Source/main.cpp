@@ -13,9 +13,9 @@ int main() {
 	while(gamewindowManager->isGameRuning()){
 
 		event.PoolEvent(gamewindowManager->getgamewindow());
+		event.IsLeftButtonPressed();
 
 		gamewindowManager->render();
 	}
 	delete(gamewindowManager);
-	return 0;
 }

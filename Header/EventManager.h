@@ -8,6 +8,7 @@ namespace Event {
 	public:
 		void PoolEvent(RenderWindow* gameWindow);
 		bool IskeyPressed(Keyboard::Key key);
+		bool IsLeftButtonPressed();
 
 	};
 }
