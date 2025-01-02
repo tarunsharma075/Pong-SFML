@@ -7,12 +7,12 @@ namespace GameManager {
 		createGamewindows();
 	}
 	
-	void GameWindowsManager::render()
-	{
-		gameWindow->clear(Color(0, 0, 0,255));
+	//void GameWindowsManager::render()
+	//{
+	//	
 
-		gameWindow->display();
-	}
+	//	
+	//}
 	RenderWindow* GameWindowsManager::getgamewindow()
 	{
 		return gameWindow;
@@ -26,6 +26,16 @@ namespace GameManager {
 	void GameWindowsManager::createGamewindows()
 	{
 		gameWindow->create(VideoMode::getDesktopMode(),gameTile,Style::Default);
+	}
+
+	void GameWindowsManager::clearGameWindow()
+	{
+		gameWindow->clear(Color(0, 0, 0, 255));
+	}
+
+	void GameWindowsManager::displayGameWindow()
+	{
+		gameWindow->display();
 	}
 
 

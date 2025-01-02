@@ -1,21 +1,38 @@
-#include"../../Header/GameWindowManager.h"
-#include"../../Header/EventManager.h"
-using namespace GameManager;
-using namespace Event;
+#include"../../Header/GameLoop.h"
+using namespace Core;
 
 int main() {
-	GameWindowsManager* gamewindowManager;
-	gamewindowManager = new GameWindowsManager();
-	EventManager event;
 
-	gamewindowManager->Initialize();
+	GameLoop* gameLoop;
+	gameLoop = new GameLoop();
 
-	while(gamewindowManager->isGameRuning()){
+	gameLoop->Initialize();
 
-		event.PoolEvent(gamewindowManager->getgamewindow());
-		event.IsLeftButtonPressed();
+	while (gameLoop->IsGameRunning()) {
 
-		gamewindowManager->render();
+		gameLoop->PoolEvents();
+		gameLoop->Update();
+
+		gameLoop->Render();
+
+		
 	}
-	delete(gamewindowManager);
+
+
+
+	//GameWindowsManager* gamewindowManager;
+	//gamewindowManager = new GameWindowsManager();
+	//EventManager event;
+
+	//gamewindowManager->Initialize();
+
+	//while(gamewindowManager->isGameRuning()){
+
+	//	event.PoolEvent(gamewindowManager->getgamewindow());
+	//	event.IsLeftButtonPressed();
+
+	//	gamewindowManager->render();
+	//}
+	//delete(gamewindowManager);
+	return 0;
 }

@@ -12,11 +12,12 @@ namespace GameManager {
 		string gameTile= "SFML-Pong!";
 	public:
 		void Initialize();
-		void render();
+		/*void render();*/
 		RenderWindow* getgamewindow();
 		bool isGameRuning();
 		void createGamewindows();
-		
+		void clearGameWindow();
+		void displayGameWindow();
 		
 	};
 }
