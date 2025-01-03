@@ -25,7 +25,7 @@ namespace GameManager {
 
 	void GameWindowsManager::createGamewindows()
 	{
-		gameWindow->create(VideoMode::getDesktopMode(),gameTile,Style::Default);
+		gameWindow->create(VideoMode::getDesktopMode(),gameTile,Style::Fullscreen);
 	}
 
 	void GameWindowsManager::clearGameWindow()
