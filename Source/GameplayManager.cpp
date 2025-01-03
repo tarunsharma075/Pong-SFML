@@ -1,8 +1,9 @@
 #include"../../Header/GameplayManager.h"
 namespace GamePlay {
 	
-	GamePlayManager::GamePlayManager()
+	GamePlayManager::GamePlayManager(EventManager* manager)
 	{
+		eventManager = manager;
 		initialize();
 	}
 	void GamePlayManager::initialize()
@@ -13,6 +14,12 @@ namespace GamePlay {
 	}
 	void GamePlayManager::Update()
 	{
+		ball->update();
+
+		paddlePlayer1->Update(eventManager->IskeyPressed(Keyboard::W),
+			eventManager->IskeyPressed(Keyboard::S));
+		paddlePlayer2->Update(eventManager->IskeyPressed(Keyboard::Up),
+			eventManager->IskeyPressed(Keyboard::Down));
 	}
 	void GamePlayManager::render(RenderWindow* gameWindow)
 	{

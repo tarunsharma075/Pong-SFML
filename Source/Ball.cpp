@@ -1,5 +1,6 @@
 #include"../../Header/Ball.h"
 namespace Ball {
+	
 	BallManager::BallManager::BallManager()
 	{
 		loadTexture();
@@ -8,10 +9,11 @@ namespace Ball {
 
 	void BallManager::BallManager::update()
 	{
+		move();
 	}
 	void BallManager::render(RenderWindow* gameWindow)
 	{
-		gameWindow->draw(ball);
+		gameWindow->draw(ballSprite);
 		
 	}
 	BallManager::~BallManager()
@@ -26,9 +28,14 @@ namespace Ball {
 	}
 	void BallManager::initializeVariables()
 	{
-		ball.setTexture(ballTexture);
-		ball.setScale(scale_x, scale_y);
-		ball.setPosition(position_x, position_y);
+		ballSprite.setTexture(ballTexture);
+		ballSprite.setScale(scale_x, scale_y);
+		ballSprite.setPosition(position_x, position_y);
 
+	}
+
+	void BallManager::move()
+	{
+		ballSprite.move(Velocity);
 	}
 }
