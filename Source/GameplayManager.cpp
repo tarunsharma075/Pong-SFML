@@ -4,6 +4,7 @@ namespace GamePlay {
 	GamePlayManager::GamePlayManager(EventManager* manager)
 	{
 		eventManager = manager;
+		boundaryManager = new BoundaryManager();
 		initialize();
 	}
 	void GamePlayManager::initialize()
@@ -23,6 +24,7 @@ namespace GamePlay {
 	}
 	void GamePlayManager::render(RenderWindow* gameWindow)
 	{
+		boundaryManager->Render(gameWindow);
 		ball->render(gameWindow);
 		paddlePlayer1->render(gameWindow);
 		paddlePlayer2->render(gameWindow);

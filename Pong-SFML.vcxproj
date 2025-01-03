@@ -134,6 +134,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Ball.cpp" />
+    <ClCompile Include="Source\Boundary.cpp" />
     <ClCompile Include="Source\EventManager.cpp" />
     <ClCompile Include="Source\GameLoop.cpp" />
     <ClCompile Include="Source\GameWindowManager.cpp" />
@@ -142,6 +143,7 @@
     <ClCompile Include="Source\GameplayManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Header\Boundary.h" />
     <ClInclude Include="Header\EventManager.h" />
     <ClInclude Include="Header\GameplayManager.h" />
     <ClInclude Include="Header\GameWindowManager.h" />
