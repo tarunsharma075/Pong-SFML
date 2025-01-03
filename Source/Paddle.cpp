@@ -16,12 +16,19 @@ namespace Paddle {
 	}
 	void PaddleManager::movePaddle(bool move_up_key_pressed, bool move_down_key_pressed)
 	{
-		if (move_up_key_pressed) {
+		if (move_up_key_pressed && paddleSprite.getPosition().y>topBoundary) {
 			paddleSprite.move(0, -paddleSpeed);
 		}
-		else if (move_down_key_pressed) {
+		else if (move_down_key_pressed && paddleSprite.getPosition().y + paddleSprite.getSize().y <bottomBoundary) {
 			paddleSprite.move(0, paddleSpeed);
 		}
+	}
+	RectangleShape PaddleManager::getPaddleSprite()
+	{
+		return paddleSprite;
+	}
+	void PaddleManager::reset(float positionX, float positionY)
+	{
 	}
 }
 
