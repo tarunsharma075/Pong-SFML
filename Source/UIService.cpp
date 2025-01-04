@@ -20,6 +20,18 @@ namespace UI {
 		rightScoreText.setFillColor(RightSide);
 		rightScoreText.setPosition(RightScorePosition_X, RightScorePosition_Y);
 	}
+	string UIService::formatScore(int score)
+	{
+		return (score < 10 ? "0" : "") + std::to_string(score);
+	}
+	void UIService::incrementPlayer1Score()
+	{
+		playerOneScore++;
+	}
+	void UIService::incrementPlayer2Score()
+	{
+		playerTwoScore++;
+	}
 	void UIService::Render(RenderWindow* gameWindow)
 	{
 		gameWindow->draw(leftScoreText);
@@ -30,5 +42,10 @@ namespace UI {
 		LoadTextFont();
 		CreateLeftScoreText();
 		CreateRighttScoreText();
+	}
+	void UIService::Upadte()
+	{
+		rightScoreText.setString(formatScore(playerOneScore));
+		leftScoreText.setString(formatScore(playerTwoScore));
 	}
 }
