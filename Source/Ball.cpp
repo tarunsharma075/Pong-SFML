@@ -1,21 +1,36 @@
 #include"../../Header/Ball.h"
 namespace Ball {
-	
+	void BallManager::updateDelayTime(float delta_time)
+	{
+		if (currentState == BallState::Idle)
+		{
+			elapsed_delay_time += delta_time;
+			if (elapsed_delay_time >= delay_duration)
+			{
+				currentState = BallState::Moving;
+				elapsed_delay_time = 0.0f;
+			}
+			else
+			{
+				return;
+			}
+		}
+	}
 	BallManager::BallManager::BallManager()
 	{
 		loadTexture();
 		initializeVariables();
 	}
 
-	void BallManager::BallManager::update(PaddleManager* playerOne, PaddleManager* playerTwo)
+	void BallManager::BallManager::update(PaddleManager* playerOne, PaddleManager* playerTwo, TimeService* timeService)
 	{
-		move();
+		move(timeService);
 		onCollision(playerOne, playerTwo);
 	}
 	void BallManager::render(RenderWindow* gameWindow)
 	{
 		gameWindow->draw(ballSprite);
-		
+
 	}
 	BallManager::~BallManager()
 	{
@@ -47,7 +62,7 @@ namespace Ball {
 		if (ball_bounds.intersects(player1_bounds) && Velocity.x < 0) {
 			Velocity.x = -Velocity.x;
 		}
-		else if (ball_bounds.intersects(player2_bounds) && Velocity.x> 0) {
+		else if (ball_bounds.intersects(player2_bounds) && Velocity.x > 0) {
 
 			Velocity.x = -Velocity.x;
 		}
@@ -58,7 +73,7 @@ namespace Ball {
 	{
 		FloatRect ballBounds = ballSprite.getGlobalBounds();
 
-		if (ballBounds.top <= topBoundary && Velocity.y < 0 
+		if (ballBounds.top <= topBoundary && Velocity.y < 0
 			|| ballBounds.top + ballBounds.height >= bottomBoundary && Velocity.y>0) {
 			Velocity.y = -Velocity.y;
 
@@ -67,13 +82,10 @@ namespace Ball {
 
 	void BallManager::handelOutOfBounds()
 	{
-		FloatRect ballBounds= ballSprite.getGlobalBounds();
+		FloatRect ballBounds = ballSprite.getGlobalBounds();
 
-		if (ballBounds.left < leftBoundary) {
-			Reset();
-		}
-		else if (ballBounds.left + ballBounds.width > rightBoundary) {
-			Reset();
+		if (ballBounds.left < leftBoundary || ballBounds.left + ballBounds.width > rightBoundary) {
+			Reset(); 
 		}
 	}
 
@@ -81,6 +93,8 @@ namespace Ball {
 	{
 		ballSprite.setPosition(position_x, position_y);
 		Velocity = Vector2f(ballSpeed, ballSpeed);
+		currentState = BallState::Idle; 
+		elapsed_delay_time = 0.0f;
 	}
 
 	void BallManager::onCollision(PaddleManager* playerOne, PaddleManager* playerTwo)
@@ -90,10 +104,13 @@ namespace Ball {
 		handelOutOfBounds();
 	}
 
-	void BallManager::move()
+	void BallManager::move(TimeService* timeService)
 	{
-		ballSprite.move(Velocity);
-	}
+		updateDelayTime(timeService->getDeltaTime());
+		if (currentState == BallState::Moving) {
+			ballSprite.move(Velocity * timeService->getDeltaTime() * speedMultiplier);
+		}
 
-	
+
+	}
 }

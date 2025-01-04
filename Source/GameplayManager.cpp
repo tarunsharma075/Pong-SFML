@@ -3,6 +3,8 @@ namespace GamePlay {
 	
 	GamePlayManager::GamePlayManager(EventManager* manager)
 	{
+		timeService = new TimeService();
+		timeService->initialize();
 		eventManager = manager;
 		boundaryManager = new BoundaryManager();
 		initialize();
@@ -15,12 +17,14 @@ namespace GamePlay {
 	}
 	void GamePlayManager::Update()
 	{
-		ball->update(paddlePlayer1,paddlePlayer2);
+		timeService->update();
+		ball->update(paddlePlayer1,paddlePlayer2, timeService);
 
 		paddlePlayer1->Update(eventManager->IskeyPressed(Keyboard::W),
-			eventManager->IskeyPressed(Keyboard::S));
+			eventManager->IskeyPressed(Keyboard::S),timeService);
 		paddlePlayer2->Update(eventManager->IskeyPressed(Keyboard::Up),
-			eventManager->IskeyPressed(Keyboard::Down));
+			eventManager->IskeyPressed(Keyboard::Down), timeService);
+		
 	}
 	void GamePlayManager::render(RenderWindow* gameWindow)
 	{

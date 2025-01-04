@@ -4,6 +4,8 @@
 #include"SFML/Graphics.hpp"
 #include"../../Header/EventManager.h"
 #include"../../Header/Boundary.h"
+#include"../../Header/TimeService.h"
+using namespace Utility;
 using namespace Boundary;
 using namespace Paddle;
 using namespace Ball;
@@ -23,6 +25,7 @@ namespace GamePlay {
 		float player2_postion_y=540 ;
 		void initialize();
 		BoundaryManager* boundaryManager;
+		TimeService* timeService;
 
 	public:
 		GamePlayManager(EventManager *manager);
