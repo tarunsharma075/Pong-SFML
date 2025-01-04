@@ -5,6 +5,8 @@
 #include"../../Header/EventManager.h"
 #include"../../Header/Boundary.h"
 #include"../../Header/TimeService.h"
+#include"../../Header/UIService.h"
+using namespace UI;
 using namespace Utility;
 using namespace Boundary;
 using namespace Paddle;
@@ -26,6 +28,7 @@ namespace GamePlay {
 		void initialize();
 		BoundaryManager* boundaryManager;
 		TimeService* timeService;
+		UIService* uiService;
 
 	public:
 		GamePlayManager(EventManager *manager);

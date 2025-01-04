@@ -7,6 +7,7 @@ namespace GamePlay {
 		timeService->initialize();
 		eventManager = manager;
 		boundaryManager = new BoundaryManager();
+		uiService = new UIService();
 		initialize();
 	}
 	void GamePlayManager::initialize()
@@ -32,6 +33,7 @@ namespace GamePlay {
 		ball->render(gameWindow);
 		paddlePlayer1->render(gameWindow);
 		paddlePlayer2->render(gameWindow);
+		uiService->Render(gameWindow);
 
 	}
 	

@@ -142,6 +142,7 @@
     <ClCompile Include="Source\Paddle.cpp" />
     <ClCompile Include="Source\GameplayManager.cpp" />
     <ClCompile Include="Source\TimeService.cpp" />
+    <ClCompile Include="Source\UIService.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Boundary.h" />
@@ -152,6 +153,7 @@
     <ClInclude Include="Header\Ball.h" />
     <ClInclude Include="Header\Paddle.h" />
     <ClInclude Include="Header\TimeService.h" />
+    <ClInclude Include="Header\UIService.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
