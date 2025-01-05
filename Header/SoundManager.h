@@ -6,7 +6,8 @@ using namespace std;
 namespace Sound {
 
     enum SoundType {
-        BallBounce
+        BallBounce,
+        Bound,
     };
 
     class SoundManager {
@@ -18,6 +19,8 @@ namespace Sound {
         static float backgroundMusicVolume;
         static const std::string bgmPath;
         static const std::string ballBouncePath;
+        static const std::string boundpath;
+        
 
         static void LoadSoundFromFile(); // Should be static since it operates on static members.
 

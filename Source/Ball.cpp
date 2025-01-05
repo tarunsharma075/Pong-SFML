@@ -93,11 +93,13 @@ namespace Ball {
 
 		if (ballBounds.left <= leftBoundary)
 		{
+			SoundManager::PlaySoundEffect(SoundType::Bound);
 			updateLeftCollisionState(true);
 			Reset();
 		}
 		else if (ballBounds.left + ballBounds.width >= rightBoundary)
 		{
+			SoundManager::PlaySoundEffect(SoundType::Bound);
 			updateRightCollisionState(true);
 			Reset();
 		}
