@@ -8,6 +8,7 @@ namespace Ball {
 			if (elapsed_delay_time >= delay_duration)
 			{
 				currentState = BallState::Moving;
+				
 				elapsed_delay_time = 0.0f;
 			}
 			else
@@ -47,6 +48,10 @@ namespace Ball {
 		ballSprite.setTexture(ballTexture);
 		ballSprite.setScale(scale_x, scale_y);
 		ballSprite.setPosition(position_x, position_y);
+		currentState = BallState::Idle;
+		elapsed_delay_time = 0.0F;
+		hadLeftCollision = false;
+		hadRightCollsion = false;
 
 	}
 
@@ -84,8 +89,15 @@ namespace Ball {
 	{
 		FloatRect ballBounds = ballSprite.getGlobalBounds();
 
-		if (ballBounds.left < leftBoundary || ballBounds.left + ballBounds.width > rightBoundary) {
-			Reset(); 
+		if (ballBounds.left <= leftBoundary)
+		{
+			updateLeftCollisionState(true);
+			Reset();
+		}
+		else if (ballBounds.left + ballBounds.width >= rightBoundary)
+		{
+			updateRightCollisionState(true);
+			Reset();
 		}
 	}
 
@@ -104,10 +116,31 @@ namespace Ball {
 		handelOutOfBounds();
 	}
 
+	bool BallManager::isLeftCollisionOccurred()
+	{
+		return hadLeftCollision;
+	}
+
+	void BallManager::updateLeftCollisionState(bool value)
+	{
+		hadLeftCollision = value;
+	}
+
+	bool BallManager::isRightCollisionOccurred()
+	{
+		return hadRightCollsion;
+	}
+
+	void BallManager::updateRightCollisionState(bool value)
+	{
+		hadRightCollsion = value;
+	}
+
 	void BallManager::move(TimeService* timeService)
 	{
 		updateDelayTime(timeService->getDeltaTime());
 		if (currentState == BallState::Moving) {
+			speedMultiplier = 100.f;
 			ballSprite.move(Velocity * timeService->getDeltaTime() * speedMultiplier);
 		}
 

@@ -45,7 +45,7 @@ namespace UI {
 	}
 	void UIService::Upadte()
 	{
-		rightScoreText.setString(formatScore(playerOneScore));
-		leftScoreText.setString(formatScore(playerTwoScore));
+		rightScoreText.setString(formatScore(playerTwoScore));
+		leftScoreText.setString(formatScore(playerOneScore));
 	}
 }

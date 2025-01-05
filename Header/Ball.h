@@ -34,11 +34,13 @@ namespace Ball {
         const float leftBoundary = 0.0;
         const float rightBoundary = 1920.f;
         void move(TimeService* timeService);
-        float speedMultiplier = 100.f;
+        float speedMultiplier = 0.f;
         float elapsed_delay_time=0.0f;
         float delay_duration = 2.f;
         void updateDelayTime(float delta_time);
         BallState currentState= BallState::Moving ;
+        bool hadLeftCollision = false;
+        bool hadRightCollsion = false;
     public:
         BallManager();
         void update(PaddleManager* playerOne, PaddleManager* playerTwo , TimeService* timeService);
@@ -55,5 +57,10 @@ namespace Ball {
         void handelOutOfBounds();
         void Reset();
         void onCollision(PaddleManager* playerOne, PaddleManager* playerTwo);
+        bool isLeftCollisionOccurred();
+        void updateLeftCollisionState(bool value);
+        bool isRightCollisionOccurred();
+        void updateRightCollisionState(bool value);
+
     };
 }

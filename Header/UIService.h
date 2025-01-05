@@ -28,8 +28,13 @@ namespace UI {
 		void LoadTextFont();
 		void CreateLeftScoreText();
 		void CreateRighttScoreText();
+		string formatScore(int score);
+		
 	public:
 		void Render(RenderWindow* gameWindow);
 		UIService();
+		void Upadte();
+		void  incrementPlayer1Score();
+		void incrementPlayer2Score();
 	};
 }

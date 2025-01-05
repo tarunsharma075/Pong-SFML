@@ -34,7 +34,7 @@ namespace GamePlay {
 		GamePlayManager(EventManager *manager);
 		void Update();
 		void render(RenderWindow* gameWindow);
-		
+		void UpdateScore();
 	};
 
 

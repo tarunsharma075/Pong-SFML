@@ -26,6 +26,8 @@ namespace GamePlay {
 		paddlePlayer2->Update(eventManager->IskeyPressed(Keyboard::Up),
 			eventManager->IskeyPressed(Keyboard::Down), timeService);
 		
+		UpdateScore();
+		uiService->Upadte();
 	}
 	void GamePlayManager::render(RenderWindow* gameWindow)
 	{
@@ -35,6 +37,19 @@ namespace GamePlay {
 		paddlePlayer2->render(gameWindow);
 		uiService->Render(gameWindow);
 
+	}
+
+	void GamePlayManager::UpdateScore()
+	{
+		if (ball->isLeftCollisionOccurred()) {
+			uiService->incrementPlayer2Score();
+			ball->updateLeftCollisionState(false);
+		}
+		else if (ball->isRightCollisionOccurred()) {
+
+			uiService->incrementPlayer1Score();
+			ball->updateRightCollisionState(false);
+		}
 	}
 	
 }
