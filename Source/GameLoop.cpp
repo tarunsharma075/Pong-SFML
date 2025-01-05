@@ -5,6 +5,7 @@ namespace Core {
 		Window_Game_Manager = new GameWindowsManager();
 		Event_Manager = new EventManager();
 		gamePlayManager = new GamePlayManager(Event_Manager);
+		soundManager = new SoundManager();
 
 		Window_Game_Manager->Initialize();
 

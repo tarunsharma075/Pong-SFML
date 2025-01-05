@@ -3,6 +3,8 @@
 #include"../../Header/Paddle.h"
 #include <iostream>
 #include"../../Header/TimeService.h"
+#include"../../Header/SoundManager.h"
+using namespace Sound;
 using namespace Utility;
 using namespace std;
 using namespace sf;

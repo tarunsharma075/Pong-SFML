@@ -3,11 +3,13 @@
 #include"../../Header/GameWindowManager.h"
 #include"../../Header/EventManager.h"
 #include"../../Header/GameplayManager.h"
+#include"../../Header/SoundManager.h";
 
 using namespace sf;
 using namespace Event;
 using namespace GameManager;
 using namespace GamePlay;
+using namespace Sound;
 
 namespace Core {
 	class GameLoop {
@@ -15,6 +17,7 @@ namespace Core {
 		GameWindowsManager* Window_Game_Manager;
 		EventManager* Event_Manager;
 		GamePlayManager* gamePlayManager;
+		SoundManager* soundManager;
 		
 		
 	public:

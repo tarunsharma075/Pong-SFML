@@ -66,10 +66,12 @@ namespace Ball {
 
 		if (ball_bounds.intersects(player1_bounds) && Velocity.x < 0) {
 			Velocity.x = -Velocity.x;
+			SoundManager::PlaySoundEffect(SoundType::BallBounce);
 		}
 		else if (ball_bounds.intersects(player2_bounds) && Velocity.x > 0) {
 
 			Velocity.x = -Velocity.x;
+			SoundManager::PlaySoundEffect(SoundType::BallBounce);
 		}
 
 	}
